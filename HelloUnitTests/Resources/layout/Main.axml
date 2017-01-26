@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              xmlns:pkg="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+  <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="First Name" />
+  <EditText android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            pkg:Bind="Text Firstname, Mode=TwoWay" />
+  <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#f00"
+            pkg:Bind="Text $GetErrors(Firstname).FirstOrDefault(); Visible $GetErrors(Firstname).Any()" />
+
+  <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Last Name" />
+  <EditText android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            pkg:Bind="Text Lastname, Mode=TwoWay, Validate=True" />
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Add user"
+            pkg:Bind="Click AddUserCommand" />
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Delete user"
+            pkg:Bind="Click DeleteUserCommand" />
+  </LinearLayout>
+  <ListView
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      pkg:ItemTemplate="@layout/_userlistitemtemplate"
+      pkg:Bind="DataContext UserGridViewModel; ItemsSource ItemsSource; SelectedItem SelectedItem, Mode=TwoWay" />
+</LinearLayout>

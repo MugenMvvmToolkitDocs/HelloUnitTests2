@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:pkg="http://schemas.android.com/apk/res-auto"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="horizontal"
+              pkg:Bind="FakeBackground $$this.SetBackgroundColor($Rel(ListView).DataContext.SelectedItem == $context ? $Color.ParseColor('#ffd942') : $Color.ParseColor('#f5f5dc'))">
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textColor="#000000"
+              android:textSize="15dp"
+              pkg:Bind="Text Lastname" />
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:textColor="#000000"
+              android:textSize="15dp"
+              pkg:Bind="Text Firstname" />
+
+</LinearLayout>
